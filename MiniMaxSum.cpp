@@ -6,15 +6,18 @@ vector<string> split_string(string);
 
 // Complete the miniMaxSum function below.
 void miniMaxSum(vector<int> arr) {
-    long long int min = 0;
-    long long int max = 0;
+    unsigned long int min_num = ULONG_MAX;
+    unsigned long int max_num = 0;
+    long int sum = 0;
     
-    sort(arr.begin(), arr.end());
-    min = accumulate(arr.begin(), arr.end()-1, 0);
-    max = accumulate(arr.begin()+1, arr.end(), 0);
+    for(int i = 0; i < 5; i ++){
+        sum += arr[i];
+        max_num = max((unsigned long int) arr[i], max_num);
+        min_num = min((unsigned long int) arr[i], min_num);
+    }
     
-    cout << min << " " << max;
-
+    cout << sum-max_num << " " << sum-min_num;    
+    
 }
 
 int main()
